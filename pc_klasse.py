@@ -114,8 +114,8 @@ class pc:
     # Funktion zur Berechnung des Stromverbrauchs
     def strom_verbrauch_berechnen(self):
         gesamt_stromverbrauch = 0
-        for pc_teil in self.teile:
-            if pc_teil != "empty":
+        for pc_teil in self.__dict__.values():
+            if isinstance(pc_teil, dict) and "stromverbrauch" in pc_teil:
                 gesamt_stromverbrauch += pc_teil["stromverbrauch"]
         return gesamt_stromverbrauch
 
